@@ -1,0 +1,6 @@
+{
+    "headers": { 
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNiYjc4ZTNjYjQxZmI3MmM5MzZkZjMiLCJpYXQiOjE2NTExMTczMzUsImV4cCI6MTY1MTcyMjEzNX0.psgVjAeTM0sobXKfWWKPAsfSeLi_urczy6x_bc7Qp34"
+    },
+    "body": "{\"name\": \"test\", \"isPrivate\": false, \"members\": null,\"avatar\": null}"
+}

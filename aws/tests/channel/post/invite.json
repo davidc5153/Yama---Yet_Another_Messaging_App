@@ -1,0 +1,7 @@
+{
+    "headers": { 
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNiYjc4ZTNjYjQxZmI3MmM5MzZkZjMiLCJpYXQiOjE2NDg4MTE5NjIsImV4cCI6MTY0OTQxNjc2Mn0.mv3MuO7ABb3b-1VrY9IRyo0z44-KWC9IUhWpzlS58nc"
+    },
+    "body": "{\"group\": \"6243be61247839960ce66347\", \"channel\": \"6243bfd0247839960ce66349\", \"user\": \"624906277a916de7a3298382\", \"message\": \"test message\"}"    
+}
+

@@ -1,0 +1,6 @@
+{
+    "headers": { 
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNiYjc4ZTNjYjQxZmI3MmM5MzZkZjMiLCJpYXQiOjE2NTI2NjI5MzAsImV4cCI6MTY1MzI2NzczMH0.1sKCx8O9EuifxuO5T6bo19-aUoQdAdhyJ9ASpOlw8Pg"
+    },
+    "queryStringParameters": { "type": "AUDIO" } 
+}

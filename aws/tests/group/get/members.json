@@ -1,0 +1,9 @@
+{
+    "headers": { 
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNiYjc4ZTNjYjQxZmI3MmM5MzZkZjMiLCJpYXQiOjE2NDk4OTU4MDAsImV4cCI6MTY1MDUwMDYwMH0.JTvQEjY0WDudRzJOabH2kKt5NUUQ44heAPy8AWhVTeI"
+    },
+    "queryStringParameters": {
+        "group": "6243be61247839960ce66347"
+    }
+    
+}

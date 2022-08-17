@@ -1,0 +1,8 @@
+{
+    "headers": { 
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjgzNTgzZjVhNWMyMWYxZGU2M2M1MzIiLCJpYXQiOjE2NTMyNjIzNjIsImV4cCI6MTY1Mzg2NzE2Mn0.TFYjjtfRawasOrBjE5cjv4cg-Z2RhdbrDBJcCommdZ4"
+    },
+    "queryStringParameters": {
+        "channel": "628acc29021bcbd0532491a7"
+    }
+}

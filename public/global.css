@@ -1,0 +1,159 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	/*
+	min-width: 350px;
+	position: relative;
+	*/
+}
+
+body {
+	font-family: Roboto, sans-serif;
+	overflow-y: hidden;
+}
+
+h1 {
+    padding: 1rem;
+	margin:0;
+}
+.hidden {
+	display: none;
+}
+
+.input_error {
+	display: none;
+	font-size: 0.8rem;
+	color: red;
+}
+.input_error.invalid {
+	display: block;
+}
+
+
+page-content {
+	text-align: center;
+	display: block;
+	padding: 50px 0;
+}
+page-content > div, page-content > button {
+    margin-bottom: 1rem;
+} 
+.page-wrapper {
+	margin: 1rem;
+    max-height: 85vh;
+    overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.mdc-layout-grid {
+	position: fixed;
+	bottom: 1rem;
+	background: blue;
+	top: 48px;
+}
+
+.mdc-layout-grid__inner {
+	height: 100%;
+}
+
+#side-bar {
+	max-width: 75px;
+}
+#side-bar>div.flexy {
+	padding: 1rem 0;
+}
+#side-panel {
+	padding: 1rem 0;
+}
+
+aside.mdc-drawer.mdc-drawer--modal.smui-drawer__absolute {
+	bottom: 0;
+    top: 48px;
+    height: auto;
+}
+.mdc-drawer-app-content {
+	height: 0;
+}
+
+.chat-message {
+	display: inline-block;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+}
+.chat-message.to {
+}
+.chat-message.from {
+	border: solid 1px #CDB96A;
+}
+.chat-message .mdc-fab {
+	background-color: #fff7;
+	vertical-align: middle;
+}
+.message-text {
+	margin: 0 1rem;
+	line-height: 48px;
+	overflow-wrap: anywhere;
+}
+
+.side-bar-margins {
+	white-space: nowrap;
+	text-align: left;
+	padding: 0 15px;
+}
+
+span.friend-list, span.channel-name {
+    padding: 6px;
+    border-radius: 4px;
+}
+span.friend-list {
+    vertical-align: super;
+}
+span.friend-list.selected, span.channel-item.selected {
+    background: #CDB96A;
+	color: #000;
+	border-radius: 4px;
+}
+audio {
+	min-width: 250px;
+	max-width: 300px;
+	width: fit-content;
+}
+
+span.alertText {
+	margin-left: 1em;
+	line-height: 24px;
+    vertical-align: text-bottom;
+}
+.mdc-snackbar__label {
+	text-align: left;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #cdb96a;
+}
+span.channel-item {
+	max-width: 10em;
+	overflow: hidden;
+}
+
+/***************************************************
+ ***************** GLOBAL MEDIA ********************
+ ***************************************************/
+ 
+@media (min-width: 640px) {
+	main {
+		max-width: none;
+	}
+
+	/*
+	div, button {
+		margin-bottom: 1rem;
+	}
+	*/
+}

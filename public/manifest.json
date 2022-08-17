@@ -1,0 +1,94 @@
+{
+    "name": "YaMa",
+    "short_name": "YaMa",
+    "description": "Yet another Messaging application",
+    "icons": [{
+            "src": "/icons/yama-gold-16.png",
+            "sizes": "16x16",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/yama-gold-32.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/yama-gold-48.png",
+            "sizes": "48x48",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/yama-gold-72.png",
+            "sizes": "72x72",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/yama-gold-96.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/yama-gold-128.png",
+            "sizes": "128x128",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/yama-gold-144.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/yama-gold-152.png",
+            "sizes": "152x152",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/yama-gold-196.png",
+            "sizes": "196x196",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/yama-gold-384.png",
+            "sizes": "384x384",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/yama-gold-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable any"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#2c2d30",
+    "theme_color": "#caba75",
+    "shortcuts": [{
+            "name": "Home",
+            "short_name": "Home",
+            "description": "Open the home pane in YaMa",
+            "url": "/#"
+        }, {
+            "name": "Chat",
+            "short_name": "Chat",
+            "description": "Open the chat pane in YaMa",
+            "url": "/#/chat"
+        },
+        {
+            "name": "Settings",
+            "short_name": "Settings",
+            "description": "Open the settings pane in YaMa",
+            "url": "/#/settings"
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "headers": { 
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNiYjc4ZTNjYjQxZmI3MmM5MzZkZjMiLCJpYXQiOjE2NTI4MzY3NTMsImV4cCI6MTY1MzQ0MTU1M30.WfW8ZtjolbyiJ6nCjeNhrP2RKdjNIbRpi-XXQbDwjy4"
+    },
+    "body": "{\"channel\":\"6243bfd0247839960ce66349\",\"member\":\"6257b6415407fb4f33fde8a4\"}"    
+}

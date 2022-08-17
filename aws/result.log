@@ -1,0 +1,165 @@
+
+
+***********************************************
+********** TEST: 2022-05-18_12-03-11 **********
+***********************************************
+
+
+*************** 1.1 ***************
+PASSED: status=200
+PASSED: body=623bb78e3cb41fb72c936df3
+*************** 1.2 ***************
+PASSED: status=200
+PASSED: body=623bb78e3cb41fb72c936df3
+*************** 2.1 ***************
+PASSED: status=401
+PASSED: body=already exists
+*************** 2.2 ***************
+PASSED: status=401
+PASSED: body=Invalid password
+*************** 2.3 ***************
+PASSED: status=200
+# FAILED: Expected body=token, received body="{\"result\":{\"active\":false,\"username\":\"2022-05-18_12-04-07\",\"name\":\"Name\",\"email\":\"2022-05-18_12-04-07@test.com\",\"phone\":\"0410123456\",\"public\":true,\"groups\":[],\"unread\":[],\"dob\":\"2000-01-01T00:00:00.000Z\",\"_id\":\"6284541f2a25cbbed9476edc\"},\"error\":\"\"}"
+*************** 2.4 ***************
+PASSED: status=200
+# FAILED: Expected body=token, received body="{\"result\":{\"active\":false,\"username\":\"2022-05-18_12-04-17\",\"name\":\"Name\",\"email\":\"2022-05-18_12-04-17@test.com\",\"phone\":\"0410123456\",\"public\":true,\"groups\":[],\"unread\":[],\"dob\":\"2000-01-01T00:00:00.000Z\",\"_id\":\"6284542ae55c91c1b6980e4a\"},\"error\":\"\"}"
+*************** 2.5 ***************
+PASSED: status=401
+PASSED: body=Invalid password
+*************** 2.6 ***************
+PASSED: status=200
+# FAILED: Expected body=token, received body="{\"result\":{\"active\":false,\"username\":\"2022-05-18_12-04-38\",\"name\":\"test-user\",\"email\":\"2022-05-18_12-04-38@test-users.com\",\"phone\":\"12345\",\"public\":true,\"groups\":[],\"unread\":[],\"dob\":\"2000-01-01T00:00:00.000Z\",\"_id\":\"6284543fd2aa9f76dfeb1be5\"},\"error\":\"\"}"
+
+*** DC *** ... Failed as registered users are no longer logged in automatically (they have to verify their email), thus a token is not generated when they first register.
+
+*************** 3.1 ***************
+PASSED: status=200
+PASSED: body=true
+*************** 3.2 ***************
+PASSED: status=200
+PASSED: body=true
+*************** 3.3 ***************
+PASSED: status=200
+PASSED: body=false
+*************** 4.1 ***************
+PASSED: status=401
+PASSED: body=Channel name already exists
+*************** 4.2 ***************
+PASSED: status=200
+PASSED: body=_id
+*************** 5.1 ***************
+PASSED: status=200
+PASSED: body=_id
+*************** 5.2 ***************
+PASSED: status=200
+PASSED: body=_id
+*************** 6.1 ***************
+PASSED: status=200
+PASSED: body=_id
+*************** 6.2 ***************
+PASSED: status=200
+PASSED: body=_id
+*************** 7.1 ***************
+PASSED: status=200
+PASSED: body=true
+*************** 7.2 ***************
+PASSED: status=200
+PASSED: body=false
+*************** 8.1 ***************
+PASSED: status=200
+PASSED: body=false
+*************** 8.2 ***************
+PASSED: status=200
+PASSED: body=false
+*************** 8.3 ***************
+PASSED: status=200
+PASSED: body=true
+*************** 9.1 ***************
+PASSED: status=401
+PASSED: body=A group already exists with this name
+*************** 9.2 ***************
+PASSED: status=200
+PASSED: body=_id
+*************** 10.1 ***************
+PASSED: status=200
+PASSED: body=_id
+*************** 10.2 ***************
+PASSED: status=200
+PASSED: body=6243cec904796429d00e5e15
+*************** 10.3 ***************
+PASSED: status=200
+PASSED: body=[]
+*************** 11.1 ***************
+PASSED: status=200
+PASSED: body=6257b6415407fb4f33fde8a4
+*************** 12.1 ***************
+PASSED: status=200
+PASSED: body=true
+*************** 13.1 ***************
+PASSED: status=200
+PASSED: body=reactions
+*************** 14.1 ***************
+PASSED: status=200
+PASSED: body=username
+*************** 14.2 ***************
+PASSED: status=200
+PASSED: body=[]
+*************** 15.1 ***************
+PASSED: status=401
+PASSED: body=already a member of the channel
+*************** 15.2 ***************
+PASSED: status=200
+PASSED: body=623bb78e3cb41fb72c936df3
+*************** 15.3 ***************
+PASSED: status=401
+PASSED: body=can not be removed
+*************** 15.4 ***************
+PASSED: status=200
+PASSED: body=6257b6415407fb4f33fde8a4
+*************** 16.1 ***************
+PASSED: status=200
+PASSED: body=2022-05-18_12-09-54
+*************** 16.2 ***************
+PASSED: status=401
+PASSED: body=already exists
+*************** 16.3 ***************
+PASSED: status=200
+PASSED: body=test
+*************** 17.1 ***************
+PASSED: status=200
+PASSED: body=true
+*************** 18.1 ***************
+PASSED: status=200
+PASSED: body=623bb78e3cb41fb72c936df3
+*************** 18.2 ***************
+PASSED: status=401
+PASSED: body=can not be removed
+*************** 19.1 ***************
+PASSED: status=200
+PASSED: body=true
+*************** 21.1 ***************
+PASSED: status=200
+PASSED: body=623bb78e3cb41fb72c936df3
+*************** 21.2 ***************
+PASSED: status=200
+PASSED: body=623bb78e3cb41fb72c936df3
+*************** 21.3 ***************
+PASSED: status=200
+PASSED: body=623bb78e3cb41fb72c936df3
+*************** 22.1 ***************
+PASSED: status=200
+PASSED: body=test-username-update
+*************** 22.2 ***************
+PASSED: status=200
+PASSED: body=623bb78e3cb41fb72c936df3
+*************** 22.3 ***************
+PASSED: status=200
+PASSED: body=test@test.com
+*************** 23.1 ***************
+PASSED: status=200
+PASSED: body=623bb78e3cb41fb72c936df3
+
+
+********** TEST: COMPLETE **********
+
+

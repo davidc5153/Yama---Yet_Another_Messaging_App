@@ -1,0 +1,105 @@
+@use 'sass:color';
+@use '@material/theme/color-palette';
+$background: #121212;
+
+// Svelte Colours! (Dark Theme)
+@use '@material/theme/index' as theme with ( 
+    $primary: #CDB96A, 
+    $secondary: #E58577,
+    $surface: color.adjust(#2C2D30), 
+    $background: #FFFBF2,
+    $error: #E58577);
+    
+@use '../app';
+
+html,
+body, .side-chat {
+    background-color: #2C2D30;
+    color: if(theme.contrast-tone($background) == 'dark', #000, #fff);
+}
+
+
+a {
+    color: #FFFBF2;
+    font-weight: bold;
+}
+
+li, label {
+    color: #ffffff;
+}
+
+// Unvisited Link
+a:link {
+    color: #CDB96A;
+    text-decoration: none;
+}
+
+// Visited Link
+/*
+a:visited {
+    color: color.scale(#E58577, $lightness: -35%);
+}
+*/
+
+// Mouse Over Link
+/*
+a:hover {
+    color: #CDB96A;
+}
+*/
+
+#side, #chat-header {
+    background-color: #232323;
+}
+
+button.avatar {
+    margin:5px 0;
+    font-size: 18px;
+}
+button.avatar.group {
+    background:#00000000;
+    border: solid 1px #CDB96A;
+    color: #CDB96A;
+}
+button.avatar.group.selected {
+    background:#CDB96A;
+    color: #000;
+}
+input#chat-message {
+    color: #fff;
+}
+
+::-webkit-scrollbar-track {
+    background: #232323;
+}
+footer {
+    color: #fdf8ea;
+    background-color: #232323;
+}
+
+/* Autofill styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  color: rgba(255, 255, 255, 0.87);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.87);
+  background-color: transparent;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.mdc-snackbar__label.info {
+	color: #000;
+}
+.mdc-snackbar__label.warning {
+	color: blue;
+}
+.mdc-snackbar__label.report {
+	color: red;
+}

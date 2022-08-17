@@ -1,0 +1,12 @@
+{
+    "headers": { 
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAxLCJpYXQiOjE2NDM0MzEwNTYsImV4cCI6MTY0NDAzNTg1Nn0.OdaWQiPF4WZ9Y1vS267-i30oErdhyRHsupOkG6qwan8"
+    },
+    "body": "{\"email\": \"test@test.com\", \"password\": \"password\"}",
+    "queryStringParameters": {
+        "guests": 4, 
+        "date": "2022-03-27", 
+        "timeslots": "[\"11:00 AM\", \"1:00 PM\"]"
+    }
+    
+}

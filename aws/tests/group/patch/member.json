@@ -1,0 +1,6 @@
+{
+    "headers": { 
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNiYjc4ZTNjYjQxZmI3MmM5MzZkZjMiLCJpYXQiOjE2NTE4MjMzMjgsImV4cCI6MTY1MjQyODEyOH0.8o4thJMbCxYtO__2m1I1ugCxydYrCCVI90vzDO-YWdA"
+    },
+    "body": "{\"group\": \"6243be61247839960ce66347\", \"member\": \"6257b6415407fb4f33fde8a4\"}"    
+}

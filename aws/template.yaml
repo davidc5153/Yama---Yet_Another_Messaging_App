@@ -1,0 +1,656 @@
+# Template file to provision resources for the YaMa chat application
+# Uses AWS SAM to dynamically set up the required resources for the gateway and lambda functions.  
+
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  YaMa: Yet another Messaging application
+  
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Api:
+    Cors:
+      AllowOrigin: "'*'"
+      AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with,Access-Control-Allow-Origin,x-amz-acl'"
+      AllowMethods: "'POST,GET,PUT,PATCH,DELETE,OPTIONS'"
+  Function:
+    Timeout: 10
+    Environment:
+      Variables:
+        # ENV Variables
+        REGION: ap-southeast-2
+        TOKEN_EXPIRY: 7d # Tokens expire after 7 days
+        BUCKET: yama-store
+    Layers:
+      - !Ref Layers
+
+# *****************************************************
+# ****************** RESOURCES ************************ 
+# *****************************************************
+
+Resources:
+
+  # *********************** LAYERS ********************
+
+  # Layer - Shared functions that can be accessed from any Lambda
+  Layers:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: Layers
+      ContentUri: layers/
+      RetentionPolicy: Retain
+    Metadata:
+      BuildMethod: nodejs14.x
+
+  # *********************** GET ********************
+
+  # TEST/GET/TEST
+  TestGetTest:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: api/test/get/
+      Handler: test.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets # AWS IAM role to allow access to the Secret holding the DB credentials and Execution of the Lambda functions
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /test/test
+            Method: get
+
+  # USER/GET/EXISTS - Pass username or email to check if it exists
+  UserGetExists:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/user/get/
+      Handler: exists.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /user/exists
+            Method: get
+
+  # USER/GET/SEARCH - Pass username or email to search for "public" users
+  UserGetSearch:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/user/get/
+      Handler: search.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /user/search
+            Method: get
+
+  # GROUP/GET/INFO - Get the information of a group
+  GroupGetInfo:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/group/get/
+      Handler: info.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /group/info
+            Method: get
+
+  # CHANNEL/GET/INFO - Get the information of a channel
+  ChannelGetInfo:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/channel/get/
+      Handler: info.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /channel/info
+            Method: get
+
+  # USER/GET/ACCEPT - Accept a group or channel invitation
+  UserGetAccept:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/user/get/
+      Handler: accept.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /user/accept
+            Method: get
+
+  # GROUP/GET/EXISTS - Check if group exists with the passed name
+  GroupGetExists:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/group/get/
+      Handler: exists.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /group/exists
+            Method: get
+
+  # CHANNEL/GET/EXISTS - Check if the channel exists under the group and with the passed name
+  ChannelGetExists:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/channel/get/
+      Handler: exists.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /channel/exists
+            Method: get
+
+  # GROUP/GET/MEMBERS - Return the active members in an active group
+  GroupGetMembers:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/group/get/
+      Handler: members.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /group/members
+            Method: get
+
+  # CHANNEL/GET/MESSAGES - Return channel messages
+  ChannelGetMessages:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/channel/get/
+      Handler: messages.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /channel/messages
+            Method: get
+
+  # BUCKET/GET/URL - Get the url for an upload bucket
+  BucketGetUrl:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/bucket/get/
+      Handler: url.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /bucket/url
+            Method: get
+
+
+  # *********************** POST ********************
+
+  # USER/POST/LOGIN - Login user with passed username or email, and password
+  UserPostLogin:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/user/post/
+      Handler: login.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /user/login
+            Method: post
+
+  # USER/POST/REGISTER - Register a usre in the database with the details passed 
+  UserPostRegister:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/user/post/
+      Handler: register.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /user/register
+            Method: post            
+
+  # CHANNEL/POST/CREATE - Create a channel for the passed group 
+  ChannelPostCreate:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/channel/post/
+      Handler: create.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /channel/create
+            Method: post            
+
+  # CHANNEL/POST/INVITE - Invite a user to a channel 
+  ChannelPostInvite:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/channel/post/
+      Handler: invite.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /channel/invite
+            Method: post            
+
+  # GROUP/POST/INVITE - Invite a user to a group 
+  GroupPostInvite:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/group/post/
+      Handler: invite.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /group/invite
+            Method: post            
+
+  # GROUP/POST/CREATE - Create a channel for the passed group 
+  GroupPostCreate:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/group/post/
+      Handler: create.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /group/create
+            Method: post
+
+  # USER/POST/VALIDATE - Validate the user's credentials but do not log them in
+  UserPostValidate:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/user/post/
+      Handler: validate.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRoled
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /user/validate
+            Method: post
+
+  # GROUP/POST/SEARCH - Search for a group 
+  GroupPostSearch:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/group/post/
+      Handler: search.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /group/search
+            Method: post
+
+  # CHANNEL/POST/MESSAGE - Send a message to a channel 
+  ChannelPostMessage:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/channel/post/
+      Handler: message.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /channel/message
+            Method: post            
+
+  # USER/POST/RESET - Reset password 
+  UserPostReset:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/user/post/
+      Handler: reset.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /user/reset
+            Method: post            
+
+
+  # *********************** PUT ********************
+
+  # CHANNEL/PUT/MEMBER - Add a member to an existing channel
+  ChannelPutMember:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/channel/put/
+      Handler: member.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /channel/member
+            Method: put
+
+
+  # *********************** PATCH ********************
+
+  # CHANNEL/PATCH/MEMBER - Remove an existing member from an existing channel
+  ChannelPatchMember:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/channel/patch/
+      Handler: member.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /channel/member
+            Method: patch
+
+  # CHANNEL/PATCH/RENAME - Rename an existing channel
+  ChannelPatchRename:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/channel/patch/
+      Handler: rename.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /channel/rename
+            Method: patch
+
+  # GROUP/PATCH/MEMBER - Remove an existing member from an existing group
+  GroupPatchMember:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/group/patch/
+      Handler: member.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /group/member
+            Method: patch
+
+  # USER/PATCH/PASSWORD - Set a new password 
+  UserPatchPassword:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/user/patch/
+      Handler: password.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /user/password
+            Method: patch
+
+  # USER/PATCH/DATA - Set new data for a user (name, username, dob, email, phone, avatar, active, public) 
+  UserPatchData:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/user/patch/
+      Handler: data.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /user/data
+            Method: patch
+
+  # *********************** DELETE ********************
+
+  # CHANNEL/DELETE/DEACTIVATE - Deactivate an existing channel
+  ChannelDeleteDeactivate:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/channel/delete/
+      Handler: deactivate.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /channel/deactivate
+            Method: delete
+
+  # GROUO/DELETE/DEACTIVATE - Deactivate an existing group
+  GroupDeleteDeactivate:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/group/delete/
+      Handler: deactivate.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Role: arn:aws:iam::512868728567:role/AWSRoleForLambdaFunctionsAndSecrets
+      Architectures:
+        - x86_64
+      Policies:
+        AWSLambdaBasicExecutionRole
+      Events:
+        YaMa:
+          Type: Api
+          Properties:
+            Path: /group/deactivate
+            Method: delete
+
+# *****************************************************
+# ********************* OUTPUT ************************ 
+# *****************************************************
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+
+  # API
+  YaMaAPI:
+    Description: "YaMa - API Gateway endpoint URL"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/yama/"
+
+  # LAYER
+  YaMaLayer:
+    Description: "Shared Layer Code ARN"
+    Value: !Ref Layers
+

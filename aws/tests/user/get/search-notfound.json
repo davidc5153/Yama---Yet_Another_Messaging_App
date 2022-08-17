@@ -1,0 +1,8 @@
+{
+    "headers": { 
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNiYjc4ZTNjYjQxZmI3MmM5MzZkZjMiLCJpYXQiOjE2NTA4NDg3MjksImV4cCI6MTY1MTQ1MzUyOX0.0nC3a6yFvq1fqN06hgLM3OCShzTeW6HJ4xL1rHw7Nhg"
+    },
+    "queryStringParameters": {
+        "username": "First Last", "group": "6243be61247839960ce66347"
+    }
+}

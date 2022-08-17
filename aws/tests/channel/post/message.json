@@ -1,0 +1,6 @@
+{
+    "headers": { 
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZhMTI3YjE1MTc5YTc5M2FjZDkzNTQiLCJpYXQiOjE2NTE1NjUxMzgsImV4cCI6MTY1MjE2OTkzOH0._C6JNNd_TONGEwEXdw6l0MZK0oN5pdAPl8UymzA-mA0"
+    },
+    "body": "{\"channel\": \"6270cbc1a09c92a64320f412\",\"message\": \"This is a test message!!!\"}"
+}

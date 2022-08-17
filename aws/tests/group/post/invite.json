@@ -1,0 +1,6 @@
+{
+    "headers": { 
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNiYjc4ZTNjYjQxZmI3MmM5MzZkZjMiLCJpYXQiOjE2NTE0ODE4NTIsImV4cCI6MTY1MjA4NjY1Mn0.Du9nixaHm6DjS3As8OdkpgY8cNMgzQ36lJqZp8t26fc"
+    },
+    "body": "{\"group\": \"6243be61247839960ce66347\", \"email\": \"testInvite111@gmail.com\", \"name\": \"Test Invite\", \"message\": \"test group invite message\"}"    
+}

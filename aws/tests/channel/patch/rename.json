@@ -1,0 +1,7 @@
+{
+    "headers": { 
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNiYjc4ZTNjYjQxZmI3MmM5MzZkZjMiLCJpYXQiOjE2NTE4MjA1NDAsImV4cCI6MTY1MjQyNTM0MH0.6XXyh1MKk29L4TVlhHG8vhs9Gy5hcFu5BE2hHNAD_lI"
+    },
+    "body": "{\"channel\": \"6243bfd0247839960ce66349\", \"name\": \"test\"}"    
+}
+

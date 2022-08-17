@@ -1,0 +1,6 @@
+{
+    "headers": { 
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNiYjc4ZTNjYjQxZmI3MmM5MzZkZjMiLCJpYXQiOjE2NTE0ODE4NTIsImV4cCI6MTY1MjA4NjY1Mn0.Du9nixaHm6DjS3As8OdkpgY8cNMgzQ36lJqZp8t26fc"
+    },
+    "body": "{\"group\": null, \"email\": \"testInviteDDD@gmail.com\", \"name\": \"Test Friend\", \"message\": \"Friend invite test message\"}"    
+}

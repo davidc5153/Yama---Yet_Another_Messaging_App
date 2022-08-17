@@ -1,0 +1,25 @@
+# General files
+.DS_Store
+.vscode
+*.drawio
+.vercel
+.dccache
+*.jar
+
+# AWS ingnores
+aws/SECRETS.env.js
+aws/.aws-sam/
+aws/layers/.secret.js
+aws/.token
+aws/.event
+
+# Node Modules
+node_modules/
+aws/layers/node_modules/
+
+# Playwright generated reports and test results
+playwright-report/
+playwright-artifacts/
+
+# JavaScript Build folder
+public/build/

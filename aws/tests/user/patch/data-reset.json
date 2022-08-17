@@ -1,0 +1,6 @@
+{
+    "headers": { 
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNiYjc4ZTNjYjQxZmI3MmM5MzZkZjMiLCJpYXQiOjE2NTIyNjcyOTcsImV4cCI6MTY1Mjg3MjA5N30.derIXPHvJZ7ypDQHclRs0NwyS4Zvud-Raj-230tpq7o"
+    },
+    "body": "{\"email\":\"test@test.com\",\"name\":\"First Last\",\"username\":\"test\",\"dob\":\"2000-07-01\",\"phone\":\"0410123456\",\"avatar\":null,\"active\": true, \"public\":true}"
+}
